@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FC86702F-539B-4E20-8865-DB53F9F8236B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry", "src\Rougamo.Retry\Rougamo.Retry.csproj", "{159AA9EF-1A20-481C-8797-568A17561FE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{159AA9EF-1A20-481C-8797-568A17561FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159AA9EF-1A20-481C-8797-568A17561FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159AA9EF-1A20-481C-8797-568A17561FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159AA9EF-1A20-481C-8797-568A17561FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{159AA9EF-1A20-481C-8797-568A17561FE0} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F012EE76-F60B-46B4-803C-DCEC072687DC}
+	EndGlobalSection
+EndGlobal

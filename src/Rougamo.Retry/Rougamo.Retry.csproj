@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+    <Version>0.1.0-alpha</Version>
+    <Authors>ihourglass</Authors>
+    <Description>Catch the specific exceptions and re-execute the method, weave IL code at complie time.</Description>
+    <PackageTags>AOP RETRY</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.Retry</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.Retry.git</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/inversionhourglass/Rougamo.Retry/master/rougamo-retry.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rougamo.Fody" Version="1.4.0-alpha" />
+  </ItemGroup>
+
+</Project>
