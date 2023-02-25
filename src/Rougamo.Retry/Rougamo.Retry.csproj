@@ -10,13 +10,17 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)key.snk</AssemblyOriginatorKeyFile>
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <PackageIcon>rougamo-retry.png</PackageIcon>
     <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.Retry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.Retry.git</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/inversionhourglass/Rougamo.Retry/master/rougamo-retry.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../../rougamo-retry.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Rougamo.Fody" Version="1.4.0-alpha" />
