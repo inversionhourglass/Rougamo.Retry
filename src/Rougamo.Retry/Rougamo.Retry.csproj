@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace />
     <Version>0.1.0-alpha</Version>
     <Authors>ihourglass</Authors>
     <Description>Catch the specific exceptions and re-execute the method, weave IL code at complie time.</Description>
@@ -16,6 +15,8 @@
     <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.Retry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.Retry.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   
   <ItemGroup>
@@ -23,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rougamo.Fody" Version="1.4.0-alpha" />
+    <PackageReference Include="Rougamo.Fody" Version="1.4.0-alpha" IncludeAssets="all" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
 
 </Project>
