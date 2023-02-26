@@ -8,7 +8,7 @@ namespace Rougamo.Retry
     /// </summary>
     public class RetryAttribute : MoAttribute
     {
-        private readonly IRetryDefinition _retryDefinition;
+        private readonly IRetryExceptionRecordable _retryRecordable;
 
         /// <summary>
         /// Any exception retry once
@@ -22,10 +22,10 @@ namespace Rougamo.Retry
 
         /// <summary>
         /// retry <paramref name="retryTimes"/> times if the exception type is one of <paramref name="exceptionTypes"/> or subclass of <paramref name="exceptionTypes"/>
-        /// </summary>
+        /// </summary> 
         public RetryAttribute(int retryTimes, params Type[] exceptionTypes)
         {
-            _retryDefinition = new ExceptionRetryDefinition(retryTimes, exceptionTypes);
+            _retryRecordable = new NonRecordableRetryDefinition(new ExceptionRetryDefinition(retryTimes, exceptionTypes));
         }
 
         /// <summary>
@@ -34,29 +34,35 @@ namespace Rougamo.Retry
         /// <param name="retryDefType"><see cref="IRetryDefinition"/></param>
         public RetryAttribute(Type retryDefType)
         {
-            _retryDefinition = RetryDefinition.Facatory(retryDefType);
+            var definition = RetryDefinition.Facatory(retryDefType);
+            _retryRecordable = definition is IRetryExceptionRecordable recordable ? recordable : new NonRecordableRetryDefinition(definition);
         }
 
         /// <inheritdoc/>
         public override void OnEntry(MethodContext context)
         {
-            context.RetryCount = _retryDefinition.Times + 1;
+            context.RetryCount = _retryRecordable.Times + 1;
         }
 
         /// <inheritdoc/>
         public override void OnException(MethodContext context)
         {
-            if (!context.ExceptionHandled && context.Exception != null)
+            if (context.ExceptionHandled || context.Exception == null) return;
+
+            if (_retryRecordable.Match(context.Exception))
             {
-                if (_retryDefinition.Match(context.Exception))
+                context.RetryCount--;
+                if (context.RetryCount > 0)
                 {
-                    context.RetryCount--;
-                }
-                else
-                {
-                    context.RetryCount = 0;
+                    _retryRecordable.TemporaryFailed(context.Exception);
+                    return;
                 }
             }
+            else
+            {
+                context.RetryCount = 0;
+            }
+            _retryRecordable.UltimatelyFailed(context.Exception);
         }
 
         /// <inheritdoc/>
