@@ -5,7 +5,7 @@ namespace Rougamo.Retry.AspNetCore
 {
     internal static class ServiceProviderHolder
     {
-        private static readonly AsyncLocal<WeakReference<IServiceProvider>> _Provider = new AsyncLocal<WeakReference<IServiceProvider>>();
+        private static readonly AsyncLocal<WeakReference<IServiceProvider>> _Provider = new();
 
         public static IServiceProvider? GetProvider()
         {

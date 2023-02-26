@@ -85,6 +85,29 @@ namespace Rougamo.Retry.Tests
         }
 
         [Fact]
+        public async Task MatcherTest()
+        {
+            var counting = new Couting();
+            var matcher = new Matcher();
+
+            Mute(() => Matcher.Matched(counting));
+            Assert.Equal(Matcher.RETRY_TIMES, counting.Value);
+            counting.Reset();
+
+            await Mute(() => matcher.MatchedAsync(counting));
+            Assert.Equal(Matcher.RETRY_TIMES, counting.Value);
+            counting.Reset();
+
+            await Mute(async () => await Matcher.UnmatchedAsync(counting));
+            Assert.Equal(0, counting.Value);
+            counting.Reset();
+
+            Mute(() => matcher.MatchedOnceAsync(counting));
+            Assert.Equal(1, counting.Value);
+            counting.Reset();
+        }
+
+        [Fact]
         public async Task CustomTest()
         {
             var counting = new Couting();

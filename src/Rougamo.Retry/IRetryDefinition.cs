@@ -1,20 +1,13 @@
-﻿using System;
-
-namespace Rougamo.Retry
+﻿namespace Rougamo.Retry
 {
     /// <summary>
-    /// Define what kind of exception needs to be retried and how many times to retry
+    /// Define what kind of exception needs to be retried
     /// </summary>
-    public interface IRetryDefinition
+    public interface IRetryDefinition : IExceptionMatcher
     {
         /// <summary>
         /// Retry times
         /// </summary>
         int Times { get; }
-
-        /// <summary>
-        /// Determine whether the exception matches
-        /// </summary>
-        bool Match(Exception e);
     }
 }

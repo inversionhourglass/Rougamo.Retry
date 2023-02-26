@@ -11,6 +11,11 @@ namespace Rougamo.Retry
             _definition = definition;
         }
 
+        public NonRecordableRetryDefinition(int retryTimes, IExceptionMatcher matcher)
+        {
+            _definition = new MatcherRetryDefinition(retryTimes, matcher);
+        }
+
         public int Times => _definition.Times;
 
         public bool Match(Exception e) => _definition.Match(e);

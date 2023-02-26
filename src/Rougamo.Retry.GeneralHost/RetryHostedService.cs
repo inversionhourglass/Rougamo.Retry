@@ -17,7 +17,7 @@ namespace Rougamo.Retry.GeneralHost
         public Task StartAsync(CancellationToken cancellationToken)
         {
             var factory = ServiceProviderDefinitionFactory.Get(_serviceProvider);
-            RetryDefinition.Set(factory);
+            Resolver.Set(factory);
 
             return Task.CompletedTask;
         }

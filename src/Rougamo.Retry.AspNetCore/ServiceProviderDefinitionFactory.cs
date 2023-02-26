@@ -4,7 +4,7 @@ namespace Rougamo.Retry.AspNetCore
 {
     internal static class ServiceProviderDefinitionFactory
     {
-        public static RetryDefinitionFactory Get(IServiceProvider serviceProvider)
+        public static ResolverFactory Get(IServiceProvider serviceProvider)
         {
             return type =>
             {
@@ -18,7 +18,7 @@ namespace Rougamo.Retry.AspNetCore
                 {
                     obj = serviceProvider.GetService(type);
                 }
-                return obj == null ? RetryDefinition.Default(type) : (IRetryDefinition)obj;
+                return obj ?? Resolver.Default(type);
             };
         }
     }

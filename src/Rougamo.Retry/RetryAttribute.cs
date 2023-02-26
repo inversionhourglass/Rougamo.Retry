@@ -21,6 +21,21 @@ namespace Rougamo.Retry
         public RetryAttribute(int retryTimes) : this(retryTimes, typeof(Exception)) { }
 
         /// <summary>
+        /// retry <paramref name="retryTimes"/> times if <see cref="IExceptionMatcher.Match(Exception)"/> return true
+        /// </summary>
+        public RetryAttribute(int retryTimes, Type exceptionOrMatcherType)
+        {
+            if (typeof(IExceptionMatcher).IsAssignableFrom(exceptionOrMatcherType))
+            {
+                _retryRecordable = new NonRecordableRetryDefinition(retryTimes, (IExceptionMatcher)Resolver.Facatory(exceptionOrMatcherType));
+            }
+            else
+            {
+                _retryRecordable = new NonRecordableRetryDefinition(new ExceptionRetryDefinition(retryTimes, exceptionOrMatcherType));
+            }
+        }
+
+        /// <summary>
         /// retry <paramref name="retryTimes"/> times if the exception type is one of <paramref name="exceptionTypes"/> or subclass of <paramref name="exceptionTypes"/>
         /// </summary> 
         public RetryAttribute(int retryTimes, params Type[] exceptionTypes)
@@ -29,12 +44,12 @@ namespace Rougamo.Retry
         }
 
         /// <summary>
-        /// <paramref name="retryDefType"/> must implement <see cref="IRetryDefinition"/>, retry <see cref="IRetryDefinition.Times"/> if <see cref="IRetryDefinition.Match(Exception)"/> return true.
+        /// <paramref name="retryDefType"/> must implement <see cref="IRetryDefinition"/>, retry <see cref="IRetryDefinition.Times"/> if <see cref="IExceptionMatcher.Match(Exception)"/> return true.
         /// </summary>
         /// <param name="retryDefType"><see cref="IRetryDefinition"/></param>
         public RetryAttribute(Type retryDefType)
         {
-            var definition = RetryDefinition.Facatory(retryDefType);
+            var definition = (IRetryDefinition)Resolver.Facatory(retryDefType);
             _retryRecordable = definition is IRetryExceptionRecordable recordable ? recordable : new NonRecordableRetryDefinition(definition);
         }
 
