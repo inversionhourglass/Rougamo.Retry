@@ -34,7 +34,7 @@ namespace Rougamo.Retry
         /// <param name="retryDefType"><see cref="IRetryDefinition"/></param>
         public RetryAttribute(Type retryDefType)
         {
-            _retryDefinition = retryDefType.New();
+            _retryDefinition = RetryDefinition.Facatory(retryDefType);
         }
 
         /// <inheritdoc/>

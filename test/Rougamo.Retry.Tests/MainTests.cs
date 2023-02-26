@@ -91,11 +91,11 @@ namespace Rougamo.Retry.Tests
             var custom = new Custom();
 
             Mute(() => custom.Matched(counting));
-            Assert.Equal(RetryDefinition.RETRY_TIMES, counting.Value);
+            Assert.Equal(DataRetryDefinition.RETRY_TIMES, counting.Value);
             counting.Reset();
 
             await Mute(() => Custom.MatchedAsync(counting));
-            Assert.Equal(RetryDefinition.RETRY_TIMES, counting.Value);
+            Assert.Equal(DataRetryDefinition.RETRY_TIMES, counting.Value);
             counting.Reset();
 
             await Mute(async () => await custom.UnmatchedAsync(counting));

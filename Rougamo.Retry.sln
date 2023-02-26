@@ -7,9 +7,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2CBE8998-8D7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FC86702F-539B-4E20-8865-DB53F9F8236B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry", "src\Rougamo.Retry\Rougamo.Retry.csproj", "{159AA9EF-1A20-481C-8797-568A17561FE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry", "src\Rougamo.Retry\Rougamo.Retry.csproj", "{159AA9EF-1A20-481C-8797-568A17561FE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry.Tests", "test\Rougamo.Retry.Tests\Rougamo.Retry.Tests.csproj", "{44B97BCD-6040-46C2-AC48-42CFCF17D466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Tests", "test\Rougamo.Retry.Tests\Rougamo.Retry.Tests.csproj", "{44B97BCD-6040-46C2-AC48-42CFCF17D466}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.GeneralHost", "src\Rougamo.Retry.GeneralHost\Rougamo.Retry.GeneralHost.csproj", "{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{2029E0D2-9ECA-4AF5-AA5F-8C2E91383CEE}"
+	ProjectSection(SolutionItems) = preProject
+		common.props = common.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry.AspNetCore", "src\Rougamo.Retry.AspNetCore\Rougamo.Retry.AspNetCore.csproj", "{5950A059-516F-400D-A5B1-FC642EF81106}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +34,14 @@ Global
 		{44B97BCD-6040-46C2-AC48-42CFCF17D466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44B97BCD-6040-46C2-AC48-42CFCF17D466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44B97BCD-6040-46C2-AC48-42CFCF17D466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5950A059-516F-400D-A5B1-FC642EF81106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5950A059-516F-400D-A5B1-FC642EF81106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5950A059-516F-400D-A5B1-FC642EF81106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5950A059-516F-400D-A5B1-FC642EF81106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +49,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{159AA9EF-1A20-481C-8797-568A17561FE0} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
 		{44B97BCD-6040-46C2-AC48-42CFCF17D466} = {FC86702F-539B-4E20-8865-DB53F9F8236B}
+		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
+		{5950A059-516F-400D-A5B1-FC642EF81106} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F012EE76-F60B-46B4-803C-DCEC072687DC}

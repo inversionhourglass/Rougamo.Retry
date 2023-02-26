@@ -2,7 +2,7 @@
 
 namespace Rougamo.Retry.Tests.Impl
 {
-    internal class RetryDefinition : IRetryDefinition
+    internal class DataRetryDefinition : IRetryDefinition
     {
         public const int RETRY_TIMES = 5;
 

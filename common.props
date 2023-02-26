@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0-alpha</Version>
+    <Authors>ihourglass</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)key.snk</AssemblyOriginatorKeyFile>
+    <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <PackageIcon>rougamo-retry.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.Retry</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.Retry.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../../rougamo-retry.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

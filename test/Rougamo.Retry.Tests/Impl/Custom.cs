@@ -6,14 +6,14 @@ namespace Rougamo.Retry.Tests.Impl
 {
     internal class Custom
     {
-        [Retry(typeof(RetryDefinition))]
+        [Retry(typeof(DataRetryDefinition))]
         public void Matched(Couting couting)
         {
             couting.Increase();
             throw new InvalidOperationException().EnableRetry();
         }
 
-        [Retry(typeof(RetryDefinition))]
+        [Retry(typeof(DataRetryDefinition))]
         public async static Task MatchedAsync(Couting couting)
         {
             couting.Increase();
@@ -21,7 +21,7 @@ namespace Rougamo.Retry.Tests.Impl
             throw new IOException().EnableRetry();
         }
 
-        [Retry(typeof(RetryDefinition))]
+        [Retry(typeof(DataRetryDefinition))]
         public async ValueTask UnmatchedAsync(Couting couting)
         {
             couting.Increase();
@@ -29,7 +29,7 @@ namespace Rougamo.Retry.Tests.Impl
             throw new ArgumentException();
         }
 
-        [Retry(typeof(RetryDefinition))]
+        [Retry(typeof(DataRetryDefinition))]
         public static void MatchedOnceAsync(Couting couting)
         {
             couting.Increase();
