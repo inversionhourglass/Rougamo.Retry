@@ -1,18 +1,15 @@
 ﻿using System;
 
-namespace Rougamo.Retry
+namespace Rougamo.Retry.Internal
 {
-    internal class ExceptionRetryDefinition : IRetryDefinition
+    internal class ExceptionMatcher : IExceptionMatcher
     {
         private readonly Type[] _exceptionTypes;
 
-        public ExceptionRetryDefinition(int retryTimes, params Type[] exceptionTypes)
+        public ExceptionMatcher(params Type[] exceptionTypes)
         {
-            Times = retryTimes;
             _exceptionTypes = exceptionTypes;
         }
-
-        public int Times { get; }
 
         public bool Match(Exception e)
         {

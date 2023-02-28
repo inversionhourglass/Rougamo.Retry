@@ -1,13 +1,9 @@
 ﻿namespace Rougamo.Retry
 {
     /// <summary>
-    /// Define what kind of exception needs to be retried
+    /// Define what kind of exception needs to be retried and how many times to retry
     /// </summary>
-    public interface IRetryDefinition : IExceptionMatcher
+    public interface IRetryDefinition : IExceptionMatcher, IRetryTimes
     {
-        /// <summary>
-        /// Retry times
-        /// </summary>
-        int Times { get; }
     }
 }

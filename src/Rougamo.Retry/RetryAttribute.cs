@@ -1,4 +1,4 @@
-﻿using Rougamo.Context;
+﻿using Rougamo.Retry.Internal;
 using System;
 
 namespace Rougamo.Retry
@@ -6,10 +6,9 @@ namespace Rougamo.Retry
     /// <summary>
     /// Re-execute method if the exception is matched
     /// </summary>
-    public class RetryAttribute : MoAttribute
+    [AttributeUsage(AttributeTargets.Method)]
+    public class RetryAttribute : BaseRetryAttribute
     {
-        private readonly IRetryExceptionRecordable _retryRecordable;
-
         /// <summary>
         /// Any exception retry once
         /// </summary>
@@ -23,15 +22,19 @@ namespace Rougamo.Retry
         /// <summary>
         /// retry <paramref name="retryTimes"/> times if <see cref="IExceptionMatcher.Match(Exception)"/> return true
         /// </summary>
-        public RetryAttribute(int retryTimes, Type exceptionOrMatcherType)
+        public RetryAttribute(int retryTimes, Type exceptionOrMatcherOrRecordableType)
         {
-            if (typeof(IExceptionMatcher).IsAssignableFrom(exceptionOrMatcherType))
+            if (typeof(IRecordableRetryDefinition).IsAssignableFrom(exceptionOrMatcherOrRecordableType))
             {
-                _retryRecordable = new NonRecordableRetryDefinition(retryTimes, (IExceptionMatcher)Resolver.Facatory(exceptionOrMatcherType));
+                _definition = new RecordableRetryDefinition(retryTimes, (IRecordableRetryDefinition)Resolver.Facatory(exceptionOrMatcherOrRecordableType));
+            }
+            else if (typeof(IExceptionMatcher).IsAssignableFrom(exceptionOrMatcherOrRecordableType))
+            {
+                _definition = new NonRecordableRetryDefinition(retryTimes, (IExceptionMatcher)Resolver.Facatory(exceptionOrMatcherOrRecordableType));
             }
             else
             {
-                _retryRecordable = new NonRecordableRetryDefinition(new ExceptionRetryDefinition(retryTimes, exceptionOrMatcherType));
+                _definition = new NonRecordableRetryDefinition(new RetryDefinition(retryTimes, exceptionOrMatcherOrRecordableType));
             }
         }
 
@@ -40,50 +43,17 @@ namespace Rougamo.Retry
         /// </summary> 
         public RetryAttribute(int retryTimes, params Type[] exceptionTypes)
         {
-            _retryRecordable = new NonRecordableRetryDefinition(new ExceptionRetryDefinition(retryTimes, exceptionTypes));
+            _definition = new NonRecordableRetryDefinition(new RetryDefinition(retryTimes, exceptionTypes));
         }
 
         /// <summary>
-        /// <paramref name="retryDefType"/> must implement <see cref="IRetryDefinition"/>, retry <see cref="IRetryDefinition.Times"/> if <see cref="IExceptionMatcher.Match(Exception)"/> return true.
+        /// <paramref name="retryDefType"/> must implement <see cref="IRetryDefinition"/>, retry <see cref="IRetryTimes.Times"/> if <see cref="IExceptionMatcher.Match(Exception)"/> return true.
         /// </summary>
         /// <param name="retryDefType"><see cref="IRetryDefinition"/></param>
         public RetryAttribute(Type retryDefType)
         {
             var definition = (IRetryDefinition)Resolver.Facatory(retryDefType);
-            _retryRecordable = definition is IRetryExceptionRecordable recordable ? recordable : new NonRecordableRetryDefinition(definition);
-        }
-
-        /// <inheritdoc/>
-        public override void OnEntry(MethodContext context)
-        {
-            context.RetryCount = _retryRecordable.Times + 1;
-        }
-
-        /// <inheritdoc/>
-        public override void OnException(MethodContext context)
-        {
-            if (context.ExceptionHandled || context.Exception == null) return;
-
-            if (_retryRecordable.Match(context.Exception))
-            {
-                context.RetryCount--;
-                if (context.RetryCount > 0)
-                {
-                    _retryRecordable.TemporaryFailed(context.Exception);
-                    return;
-                }
-            }
-            else
-            {
-                context.RetryCount = 0;
-            }
-            _retryRecordable.UltimatelyFailed(context.Exception);
-        }
-
-        /// <inheritdoc/>
-        public override void OnSuccess(MethodContext context)
-        {
-            context.RetryCount = 0;
+            _definition = definition is IRecordableRetryDefinition recordable ? recordable : new NonRecordableRetryDefinition(definition);
         }
     }
 }

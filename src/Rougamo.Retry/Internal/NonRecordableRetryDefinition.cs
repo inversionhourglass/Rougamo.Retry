@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Rougamo.Retry
+namespace Rougamo.Retry.Internal
 {
-    internal class NonRecordableRetryDefinition : IRetryExceptionRecordable
+    internal class NonRecordableRetryDefinition : IRecordableRetryDefinition
     {
         private readonly IRetryDefinition _definition;
 
@@ -13,18 +13,18 @@ namespace Rougamo.Retry
 
         public NonRecordableRetryDefinition(int retryTimes, IExceptionMatcher matcher)
         {
-            _definition = new MatcherRetryDefinition(retryTimes, matcher);
+            _definition = new RetryDefinition(retryTimes, matcher);
         }
 
         public int Times => _definition.Times;
 
         public bool Match(Exception e) => _definition.Match(e);
 
-        public void TemporaryFailed(Exception e)
+        public void TemporaryFailed(ExceptionContext context)
         {
         }
 
-        public void UltimatelyFailed(Exception e)
+        public void UltimatelyFailed(ExceptionContext context)
         {
         }
     }

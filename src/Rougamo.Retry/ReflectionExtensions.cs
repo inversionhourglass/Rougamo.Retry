@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rougamo.Retry.Internal;
+using System;
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
 
@@ -11,6 +12,8 @@ namespace Rougamo.Retry
         public static object New(this Type type)
         {
             if (type == null) throw new ArgumentNullException("type");
+
+            if (type == typeof(IRecordable)) return new NonRecordable();
 
             var ctor = _Ctors.GetOrAdd(type, t =>
             {
