@@ -1,4 +1,5 @@
-﻿using Rougamo.Retry.AspNetCore;
+﻿using Rougamo.Retry;
+using Rougamo.Retry.AspNetCore;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -14,6 +15,13 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddAspNetRetryFactory(this IServiceCollection services)
         {
             services.AddHostedService<RetryHostedService>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddRecordable<TRecordable>(this IServiceCollection services) where TRecordable : class, IRecordable
+        {
+            services.AddScoped<IRecordable, TRecordable>();
 
             return services;
         }

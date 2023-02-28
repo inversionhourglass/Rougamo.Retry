@@ -24,9 +24,9 @@ namespace Rougamo.Retry
         /// </summary>
         public RetryAttribute(int retryTimes, Type exceptionOrMatcherOrRecordableType)
         {
-            if (typeof(IRecordableRetryDefinition).IsAssignableFrom(exceptionOrMatcherOrRecordableType))
+            if (typeof(IRecordableMatcher).IsAssignableFrom(exceptionOrMatcherOrRecordableType))
             {
-                _definition = new RecordableRetryDefinition(retryTimes, (IRecordableRetryDefinition)Resolver.Facatory(exceptionOrMatcherOrRecordableType));
+                _definition = new RecordableRetryDefinition(retryTimes, (IRecordableMatcher)Resolver.Facatory(exceptionOrMatcherOrRecordableType));
             }
             else if (typeof(IExceptionMatcher).IsAssignableFrom(exceptionOrMatcherOrRecordableType))
             {
@@ -53,7 +53,7 @@ namespace Rougamo.Retry
         public RetryAttribute(Type retryDefType)
         {
             var definition = (IRetryDefinition)Resolver.Facatory(retryDefType);
-            _definition = definition is IRecordableRetryDefinition recordable ? recordable : new NonRecordableRetryDefinition(definition);
+            _definition = definition is IRecordableRetryDefinition recordableDefinition ? recordableDefinition : new NonRecordableRetryDefinition(definition);
         }
     }
 }

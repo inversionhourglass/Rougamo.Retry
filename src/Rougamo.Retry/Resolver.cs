@@ -11,7 +11,7 @@ namespace Rougamo.Retry
 
         /// <summary>
         /// </summary>
-        public static ResolverFactory Default { get; } = ReflectionExtensions.New;
+        public static ResolverFactory Default => ReflectionExtensions.New;
 
         /// <summary>
         /// </summary>

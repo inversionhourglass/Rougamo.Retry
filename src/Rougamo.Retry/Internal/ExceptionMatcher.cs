@@ -13,9 +13,10 @@ namespace Rougamo.Retry.Internal
 
         public bool Match(Exception e)
         {
+            var eType = e.GetType();
             foreach (var type in _exceptionTypes)
             {
-                if (type.IsAssignableFrom(e.GetType())) return true;
+                if (type.IsAssignableFrom(eType)) return true;
             }
 
             return false;

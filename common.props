@@ -1,7 +1,9 @@
 <Project>
   <PropertyGroup>
-    <Version>0.1.0-alpha</Version>
+    <Version>0.1.0-beta</Version>
     <Authors>ihourglass</Authors>
+    <Description>Catch the specific exceptions and re-execute the method, weave IL code at complie time.</Description>
+    <PackageTags>AOP RETRY</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
