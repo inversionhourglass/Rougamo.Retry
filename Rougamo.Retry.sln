@@ -13,12 +13,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Tests", "test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.GeneralHost", "src\Rougamo.Retry.GeneralHost\Rougamo.Retry.GeneralHost.csproj", "{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{2029E0D2-9ECA-4AF5-AA5F-8C2E91383CEE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{2029E0D2-9ECA-4AF5-AA5F-8C2E91383CEE}"
 	ProjectSection(SolutionItems) = preProject
 		common.props = common.props
+		README.md = README.md
+		rougamo-retry.png = rougamo-retry.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry.AspNetCore", "src\Rougamo.Retry.AspNetCore\Rougamo.Retry.AspNetCore.csproj", "{5950A059-516F-400D-A5B1-FC642EF81106}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.AspNetCore", "src\Rougamo.Retry.AspNetCore\Rougamo.Retry.AspNetCore.csproj", "{5950A059-516F-400D-A5B1-FC642EF81106}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{467EBEC5-4743-4583-B54E-A9AC161F241D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Samples.GeneralHost", "sample\Rougamo.Retry.Samples.GeneralHost\Rougamo.Retry.Samples.GeneralHost.csproj", "{67F68D4D-61FB-4C35-92F3-570853EED6AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Samples.AspNetCore", "sample\Rougamo.Retry.Samples.AspNetCore\Rougamo.Retry.Samples.AspNetCore.csproj", "{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +50,14 @@ Global
 		{5950A059-516F-400D-A5B1-FC642EF81106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5950A059-516F-400D-A5B1-FC642EF81106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5950A059-516F-400D-A5B1-FC642EF81106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F68D4D-61FB-4C35-92F3-570853EED6AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F68D4D-61FB-4C35-92F3-570853EED6AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F68D4D-61FB-4C35-92F3-570853EED6AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F68D4D-61FB-4C35-92F3-570853EED6AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +67,8 @@ Global
 		{44B97BCD-6040-46C2-AC48-42CFCF17D466} = {FC86702F-539B-4E20-8865-DB53F9F8236B}
 		{FF4C69DB-E06B-4EE6-A0B8-3FEF47CFABED} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
 		{5950A059-516F-400D-A5B1-FC642EF81106} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
+		{67F68D4D-61FB-4C35-92F3-570853EED6AC} = {467EBEC5-4743-4583-B54E-A9AC161F241D}
+		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC} = {467EBEC5-4743-4583-B54E-A9AC161F241D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F012EE76-F60B-46B4-803C-DCEC072687DC}
