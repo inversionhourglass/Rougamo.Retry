@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <Version>0.1.0-beta</Version>
+    <Version>0.1.0</Version>
     <Authors>ihourglass</Authors>
     <Description>Catch the specific exceptions and re-execute the method, weave IL code at complie time.</Description>
     <PackageTags>AOP RETRY</PackageTags>
@@ -10,18 +10,28 @@
     <AssemblyOriginatorKeyFile>$(SolutionDir)key.snk</AssemblyOriginatorKeyFile>
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
     <PackageIcon>rougamo-retry.png</PackageIcon>
+    <PackageReadmeFile>README_en.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.Retry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.Retry.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReleaseNotes>Now we can simplify the retry operation through RetryAttribute and RecordRetryAttribute.</PackageReleaseNotes>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+  </ItemGroup>
   
   <ItemGroup>
     <None Include="../../rougamo-retry.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\README.md">
+    <None Include="..\..\README_en.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

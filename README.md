@@ -1,4 +1,5 @@
 # Rougamo.Retry
+中文 | [English](README_en.md)
 
 ## 引用Rougamo.Retry
 ```
@@ -264,4 +265,5 @@ public void M14()
 ```
 
 ## 注意
-在使用`RetryAttribute`和`RecordRetryAttribute`时，当前项目必须直接引用`Rougamo.Retry`，不可间接引用，否则代码无法织入。
+- 在使用`RetryAttribute`和`RecordRetryAttribute`时，当前项目必须直接引用`Rougamo.Retry`，不可间接引用，否则代码无法织入。
+- `RetryAttribute`和`RecordRetryAttribute`继承的是`MoAttribute`而不是`ExMoAttribute`，所以不推荐将`RetryAttribute`和`RecordRetryAttribute`应用于Task/ValueTask返回值但不是async/await写法的方法，除非你真的知道实际处理逻辑
