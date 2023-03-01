@@ -1,5 +1,5 @@
 # Rougamo.Retry
-[ÖÐÎÄ](README.md) | English
+[ä¸­æ–‡](README.md) | English
 
 ## Use Rougamo.Retry
 ```
