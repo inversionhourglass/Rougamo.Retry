@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <Version>0.1.0</Version>
+    <VersionPrefix>4.0.0</VersionPrefix>
     <Authors>ihourglass</Authors>
     <Description>Catch the specific exceptions and re-execute the method, weave IL code at complie time.</Description>
-    <PackageTags>AOP RETRY</PackageTags>
+    <PackageTags>Retry Rougamo Fody AOP ILWeaving</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
@@ -20,7 +20,6 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageReleaseNotes>Now we can simplify the retry operation through RetryAttribute and RecordRetryAttribute.</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
