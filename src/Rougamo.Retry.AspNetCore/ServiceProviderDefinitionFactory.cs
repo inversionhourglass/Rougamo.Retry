@@ -8,7 +8,7 @@ namespace Rougamo.Retry.AspNetCore
         {
             return type =>
             {
-                object obj;
+                object? obj;
                 try
                 {
                     var provider = ServiceProviderHolder.GetProvider() ?? serviceProvider;

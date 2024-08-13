@@ -10,7 +10,7 @@ namespace Rougamo.Retry
     {
         /// <summary>
         /// </summary>
-        public ExceptionContext(object target, MethodBase method, Exception exception)
+        public ExceptionContext(object? target, MethodBase method, Exception exception)
         {
             Target = target;
             Method = method;
@@ -20,7 +20,7 @@ namespace Rougamo.Retry
         /// <summary>
         /// Type instance, null if it is a static method
         /// </summary>
-        public object Target { get; }
+        public object? Target { get; }
 
         /// <summary>
         /// The method of being woven

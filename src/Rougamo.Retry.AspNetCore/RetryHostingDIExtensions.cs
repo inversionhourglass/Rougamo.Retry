@@ -19,6 +19,8 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
+        /// <summary>
+        /// </summary>
         public static IServiceCollection AddRecordable<TRecordable>(this IServiceCollection services) where TRecordable : class, IRecordable
         {
             services.AddTransient<IRecordable, TRecordable>();
