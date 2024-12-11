@@ -1,4 +1,5 @@
-﻿using Rougamo.Retry.Internal;
+﻿using Rougamo.Metadatas;
+using Rougamo.Retry.Internal;
 using System;
 
 namespace Rougamo.Retry
@@ -7,6 +8,8 @@ namespace Rougamo.Retry
     /// Re-execute method if the exception is matched
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
+    [Advice(Feature.OnEntry | Feature.Retry)]
+    [Optimization(ForceSync = ForceSync.All, MethodContext = Context.Omit.All)]
     public class RetryAttribute : BaseRetryAttribute
     {
         /// <summary>
