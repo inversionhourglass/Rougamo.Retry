@@ -16,7 +16,7 @@ namespace Rougamo.Retry.Samples.GeneralHost
 
         public void TemporaryFailed(ExceptionContext context)
         {
-            _logger.LogDebug(context.Exception, $"error occured in {context.Method.Name}");
+            _logger.LogWarning(context.Exception, $"error occured in {context.Method.Name}");
         }
 
         public void UltimatelyFailed(ExceptionContext context)

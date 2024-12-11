@@ -16,7 +16,7 @@ namespace Rougamo.Retry.Samples.AspNetCore
 
         public void TemporaryFailed(ExceptionContext context)
         {
-            _logger.LogDebug(context.Exception, $"[{_contextAccessor.HttpContext.TraceIdentifier}] error occured in {context.Method.Name}");
+            _logger.LogWarning(context.Exception, $"[{_contextAccessor.HttpContext.TraceIdentifier}] error occured in {context.Method.Name}");
         }
 
         public void UltimatelyFailed(ExceptionContext context)
