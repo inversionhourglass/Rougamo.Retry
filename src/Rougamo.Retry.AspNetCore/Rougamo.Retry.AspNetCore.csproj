@@ -2,7 +2,7 @@
   <Import Project="../../common.props"/>
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net6.0;net7.0;net8.0</TargetFrameworks>
+c     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rougamo.Retry\Rougamo.Retry.csproj" />
+    <ProjectReference Include="..\Rougamo.Retry\Rougamo.Retry.csproj" ExcludeAssets="Build" />
   </ItemGroup>
 
 </Project>
