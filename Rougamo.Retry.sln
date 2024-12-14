@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Samples.Gener
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.Retry.Samples.AspNetCore", "sample\Rougamo.Retry.Samples.AspNetCore\Rougamo.Retry.Samples.AspNetCore.csproj", "{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.Retry.Samples.StaticAccessor", "sample\Rougamo.Retry.Samples.StaticAccessor\Rougamo.Retry.Samples.StaticAccessor.csproj", "{7E6F20C9-5E7E-4A37-A883-6949F02D462B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6F20C9-5E7E-4A37-A883-6949F02D462B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6F20C9-5E7E-4A37-A883-6949F02D462B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6F20C9-5E7E-4A37-A883-6949F02D462B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6F20C9-5E7E-4A37-A883-6949F02D462B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{5950A059-516F-400D-A5B1-FC642EF81106} = {2CBE8998-8D7E-44A3-8B15-CEEA383BDD1F}
 		{67F68D4D-61FB-4C35-92F3-570853EED6AC} = {467EBEC5-4743-4583-B54E-A9AC161F241D}
 		{055B62E0-A2C4-4A45-A3BC-071DA6D5A0DC} = {467EBEC5-4743-4583-B54E-A9AC161F241D}
+		{7E6F20C9-5E7E-4A37-A883-6949F02D462B} = {467EBEC5-4743-4583-B54E-A9AC161F241D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F012EE76-F60B-46B4-803C-DCEC072687DC}
