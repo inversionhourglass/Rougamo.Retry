@@ -8,7 +8,6 @@
     }
 
 #if NETSTANDARD2_1_OR_GREATER
-
     /// <summary>
     /// Inherits from <see cref="IRecordableMatcher"/> and implements async methods
     /// </summary>
