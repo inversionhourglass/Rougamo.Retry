@@ -1,12 +1,15 @@
 # Rougamo.Retry
-[中文](README.md) | English
+
+[中文](https://github.com/inversionhourglass/Rougamo.Retry/blob/master/README.md) | English
 
 ## Use Rougamo.Retry
+
 ```
 dotnet add package Rougamo.Retry
 ```
 
 ## Quick Start
+
 ```csharp
 // Any exception thrown by M1Async will be retried once
 [Retry]
@@ -50,6 +53,7 @@ public void M5()
 ```
 
 ## Record Exception
+
 Sometimes we also want to record the exception information when the exception throws. At this time, we can implement `IRecordable`.
 ```csharp
 // Implemente the IRecordableMatcher will not include the definition of the number of retries
@@ -99,11 +103,25 @@ public async Task M7Async()
 }
 ```
 
-### Dependency Injection
-There are many ways to record exceptions. The more common one is to write logs. Many logging frameworks require dependency injection support, but `Rougamo.Retry` itself has no dependency injection function, types will use a non-parameters constructor to create their objects.
-Considering the universality of dependency injection, there are two extension projects `Rougamo.Retry.AspNetCore` and `Rougamo.Retry.GeneralHost`.
+### Asynchronous Exception Handling
 
-#### Rougamo.Retry.AspNetCore
+Version 5.0 added asynchronous exception handling methods `TemporaryFailedAsync` and `UltimatelyFailedAsync` to the `IRecordable` interface for netstandard2.1, facilitating asynchronous operations. The asynchronous methods were only added for netstandard2.1 because it supports default interface methods. Therefore, the `ISyncRecordable` and `IAsyncRecordable` interfaces have implemented default asynchronous and synchronous methods respectively, for easier use. Additionally, since `IRecordableMatcher` and `IRecordableRetryDefinition` also implement the `IRecordable` interface, they have been provided with implementations of the default synchronous/asynchronous methods as well.
+
+### Dependency Injection
+
+The methods for recording exceptions are varied, with writing to logs being one of the most commonly used. Many logging frameworks rely on dependency injection support, whereas `Rougamo.Retry` does not come with built-in dependency injection capabilities. The types defined above will use parameterless constructors to create their objects. However, `Rougamo.Retry` offers a method to alter the object creation process via `Resolver.Set(ResolverFactory)`. It is recommended to combine this with [`DependencyInjection.StaticAccessor`](https://github.com/inversionhourglass/DependencyInjection.StaticAccessor) to set up dependency injection.
+
+```csharp
+// Modify the object creation method to obtain object instances from PinnedScope.ScopedServices
+Resolver.Set(t => PinnedScope.ScopedServices!.GetRequiredService(t));
+
+// Subsequent initialization should be completed according to the series of documentation for DependencyInjection.StaticAccessor, based on your project type.
+```
+
+#### ~~Rougamo.Retry.AspNetCore~~
+
+<font color=red>**Note that `Rougamo.Retry.AspNetCore` is no longer recommended, and the related NuGet package will be marked as obsolete. It is suggested to follow the introduction provided in the [Dependency Injection](#dependency-injection) section and use [`DependencyInjection.StaticAccessor`](https://github.com/inversionhourglass/DependencyInjection.StaticAccessor) to set up dependency injection.**</font>
+
 ```csharp
 // 1. Define a type that implements IRecordableMatcher or IRecordableRetryDefinition, then inject and use ILogger
 class RecordableRetryDefinition : IRecordableRetryDefinition
@@ -158,6 +176,9 @@ public static async Task M8Async()
 ```
 
 #### Rougamo.Retry.GeneralHost
+
+<font color=red>**Note that `Rougamo.Retry.GeneralHost` is no longer recommended, and the related NuGet package will be marked as obsolete. It is suggested to follow the introduction provided in the [Dependency Injection](#dependency-injection) section and use [`DependencyInjection.StaticAccessor`](https://github.com/inversionhourglass/DependencyInjection.StaticAccessor) to set up dependency injection.**</font>
+
 In addition to AspNetCore, we may also create some general programs. At this time, we need to reference `Rougamo.Retry.GeneralHost`.
 ```csharp
 // 1. Define a type that implements IRecordableMatcher or IRecordableRetryDefinition, then inject and use ILogger
@@ -263,5 +284,5 @@ public void M14()
 ```
 
 ## Attention
+
 - When using `RetryAttribute` and `RecordRetryAttribute`, the current project must directly reference `Rougamo.Retry`, not indirect reference, otherwise the code cannot be woven.
-- `RetryAttribute` and `RecordRetryAttribute` inherit `MoAttribute` not `ExMoAttribute`. So it is not recommended to apply `RetryAttribute` and `RecordRetryAttribute` to method which return Task/ValueTask but not use async/await syntax, unless you really Know the actual processing logic.
