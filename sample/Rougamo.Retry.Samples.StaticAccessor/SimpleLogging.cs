@@ -2,7 +2,7 @@
 
 namespace Rougamo.Retry.Samples.StaticAccessor
 {
-    public class SimpleLogging(ILogger<SimpleLogging> logger) : IRecordable
+    public class SimpleLogging(ILogger<SimpleLogging> logger) : ISyncRecordable
     {
         private readonly ILogger _logger = logger;
 

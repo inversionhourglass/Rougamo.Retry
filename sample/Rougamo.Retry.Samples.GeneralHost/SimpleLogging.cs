@@ -3,7 +3,7 @@ using System;
 
 namespace Rougamo.Retry.Samples.GeneralHost
 {
-    public class SimpleLogging : IRecordableMatcher
+    public class SimpleLogging : ISyncRecordableMatcher
     {
         private readonly ILogger _logger;
 

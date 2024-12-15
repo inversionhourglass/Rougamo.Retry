@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Rougamo.Retry.Samples.AspNetCore
 {
-    public class AspNetCoreRecorder : IRecordable
+    public class AspNetCoreRecorder : ISyncRecordable
     {
         private readonly ILogger _logger;
         private readonly IHttpContextAccessor _contextAccessor;
