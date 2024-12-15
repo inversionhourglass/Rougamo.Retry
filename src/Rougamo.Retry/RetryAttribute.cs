@@ -9,7 +9,7 @@ namespace Rougamo.Retry
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     [Advice(Feature.OnEntry | Feature.Retry)]
-    [Optimization(ForceSync = ForceSync.All, MethodContext = Context.Omit.All)]
+    [Optimization(MethodContext = Context.Omit.All)]
     public class RetryAttribute : BaseRetryAttribute
     {
         /// <summary>

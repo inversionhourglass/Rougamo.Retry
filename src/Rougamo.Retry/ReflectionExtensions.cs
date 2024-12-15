@@ -17,7 +17,7 @@ namespace Rougamo.Retry
 
             var ctor = _Ctors.GetOrAdd(type, t =>
             {
-                var ctor = t.GetConstructor(new Type[0]);
+                var ctor = t.GetConstructor([]);
                 var lambda = Expression.Lambda<Func<object>>(Expression.New(ctor));
                 return lambda.Compile();
             });

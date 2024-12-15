@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Rougamo.Retry.Internal
 {
@@ -25,5 +26,11 @@ namespace Rougamo.Retry.Internal
         public void TemporaryFailed(ExceptionContext context) => _recordableMatcher.TemporaryFailed(context);
 
         public void UltimatelyFailed(ExceptionContext context) => _recordableMatcher.UltimatelyFailed(context);
+
+#if NETSTANDARD2_1_OR_GREATER
+        public ValueTask TemporaryFailedAsync(ExceptionContext context) => _recordableMatcher.TemporaryFailedAsync(context);
+
+        public ValueTask UltimatelyFailedAsync(ExceptionContext context) => _recordableMatcher.UltimatelyFailedAsync(context);
+#endif
     }
 }
